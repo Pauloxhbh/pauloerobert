@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Button } from 'react-native';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from './../firebaseConfig';
-import { useRouter } from 'expo-router';
+import { Link, useRouter } from 'expo-router';
+
+
 
 export default function App() {
   const [exibirSenha, setExibirSenha] = useState(false);
@@ -18,12 +20,15 @@ export default function App() {
       await signInWithEmailAndPassword(auth, email, senha);
       setLoading(false);
       router.replace('/home');
-    } catch (error) {
-      console.error(error.code, error.message);
-      setLoading(false);
     }
-  };
-
+      catch (error) {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.error(errorCode);
+        console.error(errorMessage);
+        setLoading(false);
+      }
+  }
   return (
     <View style={styles.container}>
       <Text style={styles.logo}>Easyrent</Text>
@@ -53,16 +58,12 @@ export default function App() {
         <TouchableOpacity style={styles.button} onPress={handleLogin}>
           <Text style={styles.buttonText}>Entrar</Text>
         </TouchableOpacity>
-        
-        <TouchableOpacity style={styles.registerButton} onPress={() => router.push('/cadastro')}>
-          <Text style={styles.registerButtonText}>Criar uma conta</Text>
-        </TouchableOpacity>
 
         <StatusBar style="auto" />
       </View>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -114,12 +115,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 18,
   },
-  registerButton: {
-    marginTop: 20,
-  },
-  registerButtonText: {
-    color: '#fff',
-    fontSize: 16,
-    textDecorationLine: 'underline',
-  },
 });
+
+
