@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, Button } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from './../firebaseConfig';
-import { Link, useRouter } from 'expo-router';
-
-
+import { useRouter } from 'expo-router';
 
 export default function App() {
   const [exibirSenha, setExibirSenha] = useState(false);
@@ -37,7 +35,7 @@ export default function App() {
         <TextInput
           onChangeText={setEmail}
           style={styles.input}
-          placeholder="Usuário"
+          placeholder="example@gmail.com"
           placeholderTextColor="#888"
         />
         <TextInput
@@ -116,5 +114,3 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
 });
-
-

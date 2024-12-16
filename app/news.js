@@ -58,7 +58,6 @@ const NotificationsScreen = () => {
     </View>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -70,7 +69,8 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: '#E5E5E5',
     borderRadius: 5,
-    margin: 10,
+    marginHorizontal: '5%',
+    marginVertical: 10,
   },
   searchInput: {
     flex: 1,
@@ -80,13 +80,16 @@ const styles = StyleSheet.create({
   notificationItem: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 15,
+    paddingVertical: 15,
+    paddingHorizontal: '5%',
     borderBottomWidth: 1,
     borderBottomColor: '#E0E0E0',
   },
   notificationText: {
     marginLeft: 10,
     fontSize: 16,
+    flex: 1,
+    flexWrap: 'wrap',
   },
   navbar: {
     flexDirection: 'row',
